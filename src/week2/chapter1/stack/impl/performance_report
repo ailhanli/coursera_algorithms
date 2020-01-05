@@ -1,0 +1,15 @@
+linkedlist
+10_000_000 push
+elapsed 8800
+
+resizable_array
+10_000_000
+elapsed 3480
+
+arraylist
+10_000_000
+elapsed 3850
+
+array_with_known_size
+10_000_000
+elapsed 3000

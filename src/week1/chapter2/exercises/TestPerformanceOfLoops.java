@@ -1,4 +1,4 @@
-package week1.chapter2;
+package week1.chapter2.exercises;
 
 public class TestPerformanceOfLoops {
 
