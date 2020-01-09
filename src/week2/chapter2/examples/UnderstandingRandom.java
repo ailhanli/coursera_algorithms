@@ -12,9 +12,7 @@ public class UnderstandingRandom {
 			System.out.println(random.nextInt(3));
 		}
 		
-		
 		System.out.println(random.nextDouble());
 
 	}
-
 }
