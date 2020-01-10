@@ -1,4 +1,4 @@
-package week2.chapter2.exercise;
+package week2.chapter2.examples2;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,8 +45,8 @@ public class ShuffleSort_BruteForce {
 		Collections.shuffle(col);
 		col.stream().map(String::valueOf).reduce((n1, n2) -> n1 + ", " + n2).ifPresent(System.out::println);
 
-		InsertionSort.sort(res1);
-		InsertionSort.sort(res2);
+		ShellSort.sort(res1);
+		ShellSort.sort(res2);
 
 		Arrays.stream(res1).map(MyNumber::getNumber).map(String::valueOf).reduce((n1, n2) -> n1 + ", " + n2)
 				.ifPresent(System.out::println);

@@ -1,4 +1,4 @@
-package week2.chapter2.exercise;
+package week2.chapter2.examples2;
 
 import java.util.Arrays;
 import java.util.Random;

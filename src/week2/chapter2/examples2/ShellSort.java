@@ -1,29 +1,21 @@
-package week2.chapter2.exercise;
+package week2.chapter2.examples2;
 
 import java.util.Arrays;
-
-import week2.chapter2.examples.Sort;
 
 public class ShellSort {
 
 	public static void sort(Comparable[] data) {
-
-		int h = 1;
-		while (h < data.length / 3) {
-			h = h * 3 + 1;
-		}
-
-		while (h > 0) {
+		for (int h = data.length; h > 0; h = h / 2) {
+			System.out.println("h is "+h);
 			for (int i = h; i < data.length; i++) {
-				for (int j = i; j > 0; j = j - h) {
-					if (Sort.less(data[j], data[j - h])) {
-						Sort.exchage(data, j, j - h);
-					} else {
-						break;
+				for (int j = i; j >= h; j=j-h) {
+					if (data[j].compareTo(data[j - h]) == -1) {
+						Comparable temp = data[j];
+						data[j] = data[j - 1];
+						data[j - 1] = temp;
 					}
 				}
 			}
-			h /= 3;
 		}
 	}
 
