@@ -1,25 +1,27 @@
 package week3.chapter1.examples;
 
 import week2.chapter2.examples.Sort;
+import week2.chapter2.examples2.InsertionSort;
 
 public class MergeSort {
 
+	private static final int CUTOFF = 7;
+
 	public static void main(String[] args) {
-		Integer[] numbers = { 6, 1, 7, 3, 2, 10, 16, 0 };
+		Integer[] numbers = { 1,2,3,4,5,6,7 };
 		mergeSort(numbers);
 
 		Sort.isSorted(numbers);
-		
-		System.out.println(numbers);
 	}
 
 	private static void mergeSort(Comparable[] numbers) {
 		Comparable[] aux = new Comparable[numbers.length];
-		sort(numbers, aux, 0, numbers.length-1);
+		sort(numbers, aux, 0, numbers.length - 1);
 	}
 
 	private static void sort(Comparable[] numbers, Comparable[] aux, int low, int high) {
-		if (low >= high) {
+		if (low+CUTOFF-1 >= high) {
+			InsertionSort.sort(numbers);
 			return;
 		}
 
@@ -27,31 +29,27 @@ public class MergeSort {
 
 		sort(numbers, aux, low, medium);
 		sort(numbers, aux, medium + 1, high);
-		merge(numbers, aux, low, medium, high);
+		
+		if(numbers[high].compareTo(numbers[low])==1){
+			return;
+		}
+		merge(aux, numbers, low, medium, high);
 	}
 
 	private static void merge(Comparable[] numbers, Comparable[] aux, int low, int medium, int high) {
+		int j = low, k = medium + 1;
+		for (int i = low; i <= high; i++) {
 
-		// copy
-		for (int i = low; i <=high; i++) {
-			aux[i] = numbers[i];
-		}
-
-		System.out.println("low: "+low+" high "+high+" medium "+medium);
-		// merge
-		int a = low, b = medium + 1;
-		for (int c = low; c <= high; c++) {
-			if (a > medium) {
-				numbers[c] = aux[b++];
-			} else if (b > high) {
-				numbers[c] = aux[a++];
-			} else if (Sort.less(aux[b], aux[a])) {
-				numbers[c] = aux[b++];
+			if (j > medium) {
+				numbers[i] = aux[k++];
+			} else if (k > high) {
+				numbers[i] = aux[j++];
+			} else if (aux[k].compareTo(aux[j]) == -1) {
+				numbers[i] = aux[k++];
 			} else {
-				numbers[c] = aux[a++];
+				numbers[i] = aux[j++];
 			}
 		}
-
 	}
 
 }
