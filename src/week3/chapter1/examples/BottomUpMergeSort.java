@@ -1,14 +1,11 @@
 package week3.chapter1.examples;
 
 import week2.chapter2.examples.Sort;
-import week2.chapter2.examples2.InsertionSort;
 
-public class MergeSort {
-
-	private static final int CUTOFF = 7;
+public class BottomUpMergeSort {
 
 	public static void main(String[] args) {
-		Integer[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
+		Integer[] numbers = { 1, 10, 6, 12, 89, 11 };
 		mergeSort(numbers);
 
 		Sort.isSorted(numbers);
@@ -16,30 +13,19 @@ public class MergeSort {
 
 	private static void mergeSort(Comparable[] numbers) {
 		Comparable[] aux = new Comparable[numbers.length];
-		sort(numbers, aux, 0, numbers.length - 1);
-	}
+		int N = numbers.length;
 
-	private static void sort(Comparable[] numbers, Comparable[] aux, int low, int high) {
-		if (low + CUTOFF - 1 >= high) { // improvement
-			InsertionSort.sort(numbers);
-			return;
+		for (int sz = 1; sz < N; sz = sz + sz) {
+			for (int lo = 0; lo < N - sz; lo += sz + sz) {
+				merge(aux, numbers, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
+			}
 		}
-
-		int medium = low + (high - low) / 2;
-
-		sort(numbers, aux, low, medium);
-		sort(numbers, aux, medium + 1, high);
-
-		if (numbers[medium].compareTo(numbers[medium+1]) == -1) { // improvement
-			return;
-		}
-		merge(aux, numbers, low, medium, high);
 	}
 
 	private static void merge(Comparable[] numbers, Comparable[] aux, int low, int medium, int high) {
+		
 		int j = low, k = medium + 1;
 		for (int i = low; i <= high; i++) {
-
 			if (j > medium) {
 				numbers[i] = aux[k++];
 			} else if (k > high) {
@@ -51,5 +37,4 @@ public class MergeSort {
 			}
 		}
 	}
-
 }
