@@ -2,12 +2,13 @@ package week2.chapter2.examples2;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-class MyNumber implements Comparable<MyNumber> {
+class MyNumber  {
 	Integer number;
 	Integer order;
 
@@ -18,11 +19,6 @@ class MyNumber implements Comparable<MyNumber> {
 
 	public Integer getNumber() {
 		return number;
-	}
-
-	@Override
-	public int compareTo(MyNumber o) {
-		return Integer.compare(order, o.order);
 	}
 
 	@Override
@@ -45,8 +41,10 @@ public class ShuffleSort_BruteForce {
 		Collections.shuffle(col);
 		col.stream().map(String::valueOf).reduce((n1, n2) -> n1 + ", " + n2).ifPresent(System.out::println);
 
-		ShellSort.sort(res1);
-		ShellSort.sort(res2);
+		Comparator<MyNumber> c = (n1,n2)->n1.getNumber().compareTo(n2.getNumber());
+		
+		ShellSort.sort(res1,c);
+		ShellSort.sort(res2,c);
 
 		Arrays.stream(res1).map(MyNumber::getNumber).map(String::valueOf).reduce((n1, n2) -> n1 + ", " + n2)
 				.ifPresent(System.out::println);
