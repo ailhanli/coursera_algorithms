@@ -8,7 +8,7 @@ import week2.chapter2.examples.Student;
 
 public class InsertionSort {
 
-	public static void sort(Object[] data, Comparator comp) {
+	public static <T> void sort(T[] data, Comparator<T> comp) {
 
 		for (int i = 0; i < data.length; i++) {
 			for (int j = i; j > 0; j--) {
@@ -24,8 +24,7 @@ public class InsertionSort {
 	public static void main(String[] args) {
 		Student[] ss = { new Student("s1", 56), new Student("s2", 10), new Student("s3", 53) };
 
-		Comparator<Student> c = (s1, s2) -> s1.getAge().compareTo(s2.getAge());
-		sort(ss, c);
+		sort(ss, (s1, s2) -> s1.getAge().compareTo(s2.getAge()));
 		Arrays.stream(ss).forEach(System.out::println);
 	}
 

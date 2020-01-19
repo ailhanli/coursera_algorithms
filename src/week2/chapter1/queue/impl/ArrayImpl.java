@@ -7,6 +7,7 @@ public class ArrayImpl<Item> implements Queue<Item> {
 	Item[] data;
 	int head, tail;
 
+	@SuppressWarnings("unchecked")
 	public ArrayImpl(int size) {
 		data = (Item[]) new Object[size];
 	}

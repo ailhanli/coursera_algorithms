@@ -7,6 +7,7 @@ public class ResizableArrayImpl<Item> implements Stack<Item> {
 	Item[] data;
 	int current = 0;
 
+	@SuppressWarnings("unchecked")
 	public ResizableArrayImpl() {
 		data = (Item[]) new Object[2];
 	}
@@ -18,6 +19,7 @@ public class ResizableArrayImpl<Item> implements Stack<Item> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void resize(int ns) {
 		Item[] old = data;
 		data = (Item[]) new Object[ns];
@@ -55,7 +57,7 @@ public class ResizableArrayImpl<Item> implements Stack<Item> {
 	}
 
 	public static void main(String[] args) {
-		Stack<Integer> stack = new ResizableArrayImpl<>();
+//		Stack<Integer> stack = new ResizableArrayImpl<>();
 
 //		long before = System.currentTimeMillis();
 //		for (int i = 0; i < 10_000_000; i++) {

@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public interface Sort {
 
-	public static void sort(Object[] comparables, Comparator c ) {
+	public static <T> void sort(T[] comparables, Comparator<T> c ) {
 		if (isSorted(comparables,c)) {
 			return;
 		}
@@ -17,7 +17,7 @@ public interface Sort {
 		}
 	}
 
-	public static boolean isSorted(Object[] comps, Comparator c) {
+	public static <T> boolean isSorted(T[] comps, Comparator<T> c) {
 		for (int i = 0; i < comps.length - 1; i++) {
 			if (less(c,comps[i], comps[i + 1])) {
 				continue;
@@ -28,7 +28,7 @@ public interface Sort {
 		return true;
 	}
 
-	public static boolean less(Comparator c, Object a, Object b) {
+	public static <T> boolean less(Comparator<T>c, T a, T b) {
 		return c.compare(a, b)==-1;
 	}
 

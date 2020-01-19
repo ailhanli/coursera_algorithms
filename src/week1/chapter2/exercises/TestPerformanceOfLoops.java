@@ -7,7 +7,8 @@ public class TestPerformanceOfLoops {
 	int a = 2_100_000_000;
 	System.out.println(a);
 	  
-    int sum = 0;
+    @SuppressWarnings("unused")
+	int sum = 0;
     long now = System.currentTimeMillis();
     for (int i = 0; i < 2_000_000_000; i++) {
       for (int j = 0; j < 2_000_000_000; j++) {

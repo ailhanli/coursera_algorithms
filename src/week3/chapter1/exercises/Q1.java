@@ -1,6 +1,7 @@
 package week3.chapter1.exercises;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * 
@@ -14,46 +15,31 @@ import java.util.Arrays;
  */
 public class Q1 {
 
-	private static boolean less(Comparable v, Comparable w) {
-		return v.compareTo(w) < 0;
-	}
+	public static <T> void merge(T[] numbers, Comparator<T> comp) {
+		int n = numbers.length / 2;
+		T[] aux = Arrays.copyOf(numbers, n);
 
-	public static void merge(Comparable[] array) {
-		int n = array.length / 2;
-		Comparable[] aux = new Comparable[n];
-		for (int i = 0; i < n; i++) {
-			aux[i] = array[i];
-		}
-		System.out.println(Arrays.toString(aux));
-		
-		int l = 0;
-		int r = n;
-		for (int k = 0; k < 2 * n; k++) {
-			if (l >= n)
+		int l = 0, r = n;
+
+		for (int i = 0; i < numbers.length; i++) {
+			if (l >= n) {
 				break;
-			else if (r >= 2 * n)
-				array[k] = aux[l++];
-			else if (less(array[r], aux[l]))
-				array[k] = array[r++];
-			else
-				array[k] = aux[l++];
+			} else if (r >= numbers.length) {
+				numbers[i] = aux[l++];
+			} else if (comp.compare(numbers[r] , aux[l])<0) {
+				numbers[i] = numbers[r++];
+			} else {
+				numbers[i] = aux[l++];
+			}
 		}
+
 	}
 
 	public static void main(String[] args) {
-		int n = 4;
-		int[] subarray1 = {1,2,67,89};
-		int[] subarray2 = {4,5,100,200};
 
-		Arrays.sort(subarray1);
-		Arrays.sort(subarray2);
-		Integer[] array = new Integer[2 * n];
-		for (int i = 0; i < n; i++) {
-			array[i] = subarray1[i];
-			array[n + i] = subarray2[i];
-		}
+		Integer[] array = new Integer[] { 15, 26, 30, 50, 7, 10, 15, 18, 19 };
 		System.out.println(Arrays.toString(array));
-		merge(array);
+		merge(array,Integer::compareTo);
 		System.out.println(Arrays.toString(array));
 	}
 

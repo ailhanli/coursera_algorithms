@@ -6,6 +6,7 @@ public class ArrayImpl<Item> implements Iterable<Item> {
 	Item[] data;
 	int current = 0;
 
+	@SuppressWarnings("unchecked")
 	public ArrayImpl(int size) {
 		data = (Item[]) new Object[size];
 	}
@@ -42,7 +43,7 @@ public class ArrayImpl<Item> implements Iterable<Item> {
 	}
 
 	public static void main(String[] args) {
-		ArrayImpl<Integer> stack = new ArrayImpl<>(10_000_000);
+//		ArrayImpl<Integer> stack = new ArrayImpl<>(10_000_000);
 
 //		long before = System.currentTimeMillis();
 //		for (int i = 0; i < 10_000_000; i++) {

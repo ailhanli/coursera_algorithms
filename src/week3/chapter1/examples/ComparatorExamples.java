@@ -1,7 +1,6 @@
 package week3.chapter1.examples;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -58,8 +57,7 @@ public class ComparatorExamples {
 		
 
 //new way
-		Comparator<Book> c = Comparator.comparing(Book::getName).thenComparing(Book::getPage);
-		books.stream().sorted(c).forEach(System.out::println);
+		books.stream().sorted(Comparator.comparing(Book::getName).thenComparing(Book::getPage)).forEach(System.out::println);
 	}
 
 }

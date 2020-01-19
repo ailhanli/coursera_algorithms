@@ -1,28 +1,26 @@
 package week3.chapter1.examples;
 
+import java.util.Arrays;
 import java.util.Comparator;
-
-import week2.chapter2.examples.Sort;
 
 public class MergeSort {
 
-	private static final int CUTOFF = 7;
-
 	public static void main(String[] args) {
-		Integer[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
-		sort(numbers, (o1,  o2)->1);
+		Integer[] numbers = { 2, 4, 1, 3, 5 };
 
-		Comparator<Integer> c = Integer::compareTo;
-		Sort.isSorted(numbers, c);
+		sort(numbers, Integer::compareTo);
+
+		System.out.println(Arrays.toString(numbers));
 	}
 
-	public static <T> void sort(Object[] numbers, Comparator<T> c) {
-		Object[] aux = new Object[numbers.length];
+	public static <T> void sort(T[] numbers, Comparator<T> c) {
+		@SuppressWarnings("unchecked")
+		T[] aux = (T[]) new Object[numbers.length];
 		sort(numbers, aux, 0, numbers.length - 1, c);
 	}
 
-	private static  void sort(Object[] numbers, Object[] aux, int low, int high, Comparator c) {
-		if (low  >= high) {
+	private static <T> void sort(T[] numbers, T[] aux, int low, int high, Comparator<T> c) {
+		if (low >= high) {
 			return;
 		}
 
@@ -31,13 +29,14 @@ public class MergeSort {
 		sort(numbers, aux, low, medium, c);
 		sort(numbers, aux, medium + 1, high, c);
 
-		if (c.compare(numbers[medium], numbers[medium + 1])<0){ // improvement
-			return;
-		}
-		merge(aux, numbers, low, medium, high, c);
+		merge(numbers, aux, low, medium, high, c);
 	}
 
-	private static  void merge(Object[] numbers, Object[] aux, int low, int medium, int high, Comparator c) {
+	private static <T> void merge(T[] numbers, T[] aux, int low, int medium, int high, Comparator<T> c) {
+		for (int i = low; i <= high; i++) {
+			aux[i] = numbers[i];
+		}
+
 		int j = low, k = medium + 1;
 		for (int i = low; i <= high; i++) {
 
@@ -45,12 +44,11 @@ public class MergeSort {
 				numbers[i] = aux[k++];
 			} else if (k > high) {
 				numbers[i] = aux[j++];
-			} else if (c.compare(aux[k], aux[j])<0) {
+			} else if (c.compare(aux[k], aux[j]) < 0) {
 				numbers[i] = aux[k++];
 			} else {
 				numbers[i] = aux[j++];
 			}
 		}
 	}
-
 }

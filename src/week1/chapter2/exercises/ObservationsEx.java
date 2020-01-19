@@ -5,6 +5,7 @@ public class ObservationsEx {
 	public static void main(String[] args) {
 		int a = 2;
 		int b = 3;
+		@SuppressWarnings("unused")
 		int c;
 		long before = System.nanoTime();
 		c= a+b;
