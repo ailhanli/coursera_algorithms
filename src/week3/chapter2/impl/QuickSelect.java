@@ -1,6 +1,6 @@
-package week3.chapter2.exercises;
+package week3.chapter2.impl;
 
-import static week3.chapter2.exercises.Partition.partition;
+import static week3.chapter2.impl.Partition.partition;
 
 import java.util.Arrays;
 import java.util.Comparator;

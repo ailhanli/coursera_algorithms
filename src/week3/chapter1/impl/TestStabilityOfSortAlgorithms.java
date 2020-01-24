@@ -1,4 +1,4 @@
-package week3.chapter1.examples;
+package week3.chapter1.impl;
 
 import java.util.Arrays;
 import java.util.Comparator;

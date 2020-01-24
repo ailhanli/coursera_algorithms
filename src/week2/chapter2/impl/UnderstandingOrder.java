@@ -1,4 +1,4 @@
-package week2.chapter2.examples;
+package week2.chapter2.impl;
 
 import java.util.Arrays;
 import java.util.Collections;

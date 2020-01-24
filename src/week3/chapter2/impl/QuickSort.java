@@ -1,6 +1,6 @@
-package week3.chapter2.exercises;
+package week3.chapter2.impl;
 
-import static week3.chapter2.exercises.Partition.partition;
+import static week3.chapter2.impl.Partition.partition;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -24,10 +24,10 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
-		Integer[] numbers = { 5, 1, 3, 8, 10, 56, 0, -12 };
-		Comparator<Integer> comp = Integer::compareTo;
-		sort(numbers, comp);
+		Character[] data = {'A', 'B', 'D', 'U', 'L', 'L' , 'A', 'H'};
+		Comparator<Character> comp = Character::compareTo;
+		sort(data, comp);
 
-		System.out.println(Arrays.toString(numbers));
+		System.out.println(Arrays.toString(data));
 	}
 }

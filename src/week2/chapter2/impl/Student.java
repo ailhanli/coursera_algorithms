@@ -1,4 +1,4 @@
-package week2.chapter2.examples;
+package week2.chapter2.impl;
 
 public class Student {
 	String name;

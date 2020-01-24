@@ -1,4 +1,4 @@
-package week2.chapter2.examples;
+package week2.chapter2.impl;
 
 class MyDate implements Comparable<MyDate> {
 	Integer year, month, day, hour, minute, second;

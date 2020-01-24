@@ -1,6 +1,4 @@
-package week3.chapter2.exercises;
-
-import static week3.chapter2.exercises.Dijaktra3WayPartition.partition;
+package week3.chapter2.impl;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -12,15 +10,14 @@ public class ThreeWayQuickSort {
 	}
 
 	public static <T> void sort(T[] data, Comparator<T> comp, int low, int high) {
-
 		if (low >= high) {
 			return;
 		}
+		
+		int lt = Dijaktra3WayPartition.partition(data, comp, low, high);
 
-		int j = partition(data, comp, low, high);
-
-		sort(data, comp, low, j - 1);
-		sort(data, comp, j + 1, high);
+		sort(data, comp, low, lt-1);
+		sort(data, comp, lt+1, high);
 	}
 
 	public static void main(String[] args) {

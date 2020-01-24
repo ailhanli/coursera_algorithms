@@ -1,4 +1,4 @@
-package week3.chapter2.exercises;
+package week3.chapter2.impl;
 
 import java.util.Comparator;
 
@@ -7,7 +7,7 @@ public class Partition {
 	public static <T> int partition(T[] data, Comparator<T> comp, int low, int high) {
 
 		int i = low, j = high+1;
-		while (true) {
+		while (i<j) {
 			while (comp.compare(data[++i], data[low]) < 0) {
 				if (i == high) {
 					break;

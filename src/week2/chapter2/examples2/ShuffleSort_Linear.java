@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import week2.chapter2.examples.Sort;
+import week2.chapter2.impl.Sort;
 
 public class ShuffleSort_Linear {
 

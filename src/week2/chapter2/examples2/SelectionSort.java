@@ -3,8 +3,8 @@ package week2.chapter2.examples2;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import week2.chapter2.examples.Sort;
-import week2.chapter2.examples.Student;
+import week2.chapter2.impl.Sort;
+import week2.chapter2.impl.Student;
 
 public class SelectionSort {
 
